@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>HTML5-my-base</title>
+		<title>ローン試算</title>
 		<meta name="description" content="">
 		<link rel="stylesheet" href="css/my-reset.css">
 		<link rel="stylesheet" href="css/style.css">
@@ -14,29 +14,24 @@
 
 	<body>
 		<div class="p-loan">
-		<h1>ローン試算</h1>
-		<!-- <form class="diet_form">
-    <dl>
-        <dt>借入額(kg)：</dt>
-        <dd><input type="number" class="box" name="borrowing" value="3000"></dd>
-        <dt>（ボーナス払いは？）：</dt>
-        <dd><input type="number" class="box" name="bonus"></dd>
-        <dt>返済期間：</dt>
-        <dd><input type="number" class="box" name="period" value="30"></dd>
-        <dt>金利：</dt>
-        <dd><input type="number" class="box" name="ir" value="1.2"></dd>
-        <p><input type="button" class="calc-btn" onclick="calc(borrowing.value, bonus.value, period.value, ir.value);" value="計算"></p>
-
-        <dt>TEST：</dt>
-        <dd><input id="test" class="box" type="text" readonly=""></dd>
-    </dl>
-</form> -->
+		<h1>ローン試算(元利均等返済)</h1>
 
 			<form method="post" target="_top" name="loan">
 				<table>
 					<tr>
-						<td>借入金額：<input name="pv" id="pv" value="4000" size="10" min="1">万円</td>
+						<td>購入金額：<input name="pv" id="pv" value="4000" size="10" min="1">万円</td>
 					</tr>
+					<tr>
+						<td>頭金：<input name="deposit" id="deposit" value="500" size="10" min="1">万円</td>
+					</tr>
+
+					<tr>
+						<td>ボーナス予定返済額（1回分）：<input name="bonus" id="bonus" value="10" size="10" min="1">万円/回</td>
+					</tr>
+					<tr>
+						<td>ボーナス予定返済回数（n）：<input name="bonusN" id="bonusN" value="2" size="10" min="1">回/年</td>
+					</tr>
+
 					<tr>
 						<td>融資金利：<input type="number" name="ir" id="ir" value="0.625" size="10"
 								min="0.3">%</td></tr>
@@ -45,16 +40,29 @@
 					</tr>
 				</table>
 				<div style="text-align:center; margin-top:20px;"><button type="button"
-						class="square_btn" onclick="a.value= PMT ();">計算</button></div>
+						class="square_btn" onclick="a.value= PMT ();b.value= PMT2 ();">計算</button></div>
 				<table>
 					<tr>
-						<th>返済月額</th>
+						<th>毎月返済額</th>
 					</tr>
 					<tr>
 						<td><input name="a" class="satei_result" value="（計算結果）"><span class="red">円</span></td>
 					</tr>
 				</table>
+				<table>
+					<tr>
+						<th>ボーナス時返済額（1回分）</th>
+					</tr>
+					<tr>
+						<td><input name="b" class="satei_result" value="（計算結果）"><span class="red">円</span></td>
+					</tr>
+				</table>
+
 			</form>
+			<h2>補足</h2>
+			<ul>
+				<li>融資金利は申込銀行及び審査結果、実行時期により異なりますので参考金額としてご利用ください。</li>
+			</ul>
 		</div>
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
